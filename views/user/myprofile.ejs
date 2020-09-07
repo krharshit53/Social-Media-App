@@ -9,8 +9,10 @@
             <h1>Followers</h1>
             <%user.followers.forEach((follower)=>
             {%>
+              <div class="row">
                 <img style="width: 40%;" src="<%=follower.image%>">
                 <a href="/myprofile/<%=follower.name%>"><%=follower.name%></a>
+              </div>
             <%})%>
         </div>
 
@@ -128,8 +130,10 @@
             <h1>Following</h1>
             <%user.following.forEach((following)=>
             {%>
-              <img src="<%=following.image%>">
+              <div class="row">
+               <img src="<%=following.image%>">
                 <a href="/myprofile/<%=following.name%>"><%=following.name%></a>
+              </div>
             <%})%>
         </div>
     </div>
