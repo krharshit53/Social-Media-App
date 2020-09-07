@@ -77,7 +77,7 @@ router.post('/register',(req,res)=>
 
 
 
-  router.get('/follow/:author_name',(req,res)=>
+  router.get('/follow/:author_name/:no',(req,res)=>
   {
      /*follower update*/
       
@@ -112,13 +112,16 @@ router.post('/register',(req,res)=>
 
       
       })
-
-      res.redirect('/post/explore')
+      if(req.params.no==='1')
+      return res.redirect('/post/home')
+      else if(req.params.no==='2')
+      return res.redirect('/post/explore')
+     
                 
                 
  })
 
- router.get('/unfollow/:author_name',(req,res)=>
+ router.get('/unfollow/:author_name/:no',(req,res)=>
  {
     /*follower update*/
      
@@ -154,7 +157,12 @@ router.post('/register',(req,res)=>
      
      })
 
-     res.redirect('/post/explore')
+     if(req.params.no==='1')
+     return res.redirect('/post/home')
+     else if(req.params.no==='2')
+     return res.redirect('/post/explore')
+     
+               
                
                
 })

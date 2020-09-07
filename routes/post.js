@@ -1,6 +1,7 @@
 const router=require('express').Router()
 const Post=require('../models/post')
 const User=require('../models/user')
+const Comment=require('../models/comment')
 const { route, options } = require('../middlewares')
 
 
@@ -11,7 +12,7 @@ router.get('/explore',(req,res)=>
         if(err)
         return res.send(err)
 
-        res.render('post/show',{posts})
+        res.render('post/explore',{posts})
     })
 })
 
@@ -42,7 +43,7 @@ router.get('/home',(req,res)=>
               {
                    if(err)
                    return res.send(err)
-                    res.render('post/show',{posts})
+                    res.render('post/home',{posts})
               })
 
          })
@@ -56,10 +57,24 @@ router.get('/:id/readmore',(req,res)=>
        {
              if(err)
              return res.render(err)
-             res.render('post/specific_post',{post})
+
+             let ids=[]
+             for(let i=0;i<post.comments.length;i++)
+             {
+                  ids.push(post.comments[i].commentId)
+             }
+
+             Comment.find().where('_id').in(ids).exec((err,comments)=>
+            {
+                 if(err)
+                 return res.send(err)
+                  
+                 res.render('post/specific_post',{post,comments})
+            })
+             
        })
 })
-
+/*
 router.get('/mypost',(req,res)=>
 {
        User.findOne({username:req.user.username},(err,user)=>
@@ -77,7 +92,7 @@ router.get('/mypost',(req,res)=>
                   res.render('post/show',{posts})
             })
        })
-})
+})*/
 
 router.get('/new',(req,res)=>
 {
@@ -106,6 +121,47 @@ router.post('/new',(req,res)=>
                 
                 
         })
+})
+
+
+router.get('/:id/like/:no',(req,res)=>
+{
+        Post.findByIdAndUpdate(req.params.id,{
+             $push:{"likes":{
+
+               username:req.user.username
+             }}
+             },(err,post)=>
+             {
+                  if(err)
+                  return res.send(err)
+
+                  if(req.params.no==='1')
+                  return res.redirect('/post/explore')
+                  else if(req.params.no==='2')
+                  return res.redirect('/post/home')
+             }
+        )
+})
+
+router.get('/:id/unlike/:no',(req,res)=>
+{
+        Post.findByIdAndUpdate(req.params.id,{
+             $pull:{"likes":{
+
+               username:req.user.username
+             }}
+             },(err,post)=>
+             {
+                  if(err)
+                  return res.send(err)
+
+                  if(req.params.no==='1')
+                  return res.redirect('/post/explore')
+                  else if(req.params.no==='2')
+                  return res.redirect('/post/home')
+             }
+        )
 })
 
 
