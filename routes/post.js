@@ -104,7 +104,7 @@ router.post('/new',ensureAuthenticated,(req,res)=>
         Post.create({body:req.body.body,createdAt:Date.now(),author:{name:req.user.name,username:req.user.username,image:req.user.image}},(err,post)=>
         {
                 if(err)
-                return res.send(err)
+                return res.render('error',{error:err.errors.body.message})
 
                 User.findOneAndUpdate({username:req.user.username},{
                     $push:{"posts": {

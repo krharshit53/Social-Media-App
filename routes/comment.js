@@ -6,17 +6,13 @@ const { route } = require('../middlewares')
 
 
 
-router.get('/:post_id/new',ensureAuthenticated,(req,res)=>
-{
-       res.render('comment/new',{id:req.params.post_id})
-})
 
 router.post('/:post_id/new',ensureAuthenticated,(req,res)=>
 {
     Comment.create({body:req.body.body,author:req.user.username},(err,comment)=>
     {
            if(err)
-           return res.send(err)
+            return res.render('error',{error:err.errors.body.message})
 
            Post.findByIdAndUpdate(req.params.post_id,{
             $push:{"comments": {

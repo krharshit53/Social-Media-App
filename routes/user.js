@@ -39,17 +39,31 @@ router.get('/register',(req,res)=>
 router.post('/register',(req,res)=>
 {
      
-       
-
-          let body=req.body
-          User.create(body,(err,user)=>
-          {
+         User.findOne({username:req.body.username},(err,user)=>
+         {
                if(err)
                return res.send(err)
 
+               if(user)
+               {
+                
+                 req.flash("error","username is already taken")
+                 return  res.render('user/register')
+               }
+               else
+               {
+                let body=req.body
+                User.create(body,(err,user)=>
+                {
+                     if(err)
+                     return res.send(err)
+      
+                
+                  res.render('user/login')
+              })
+               }
+         })
           
-            res.render('user/login')
-        })
           
     })
   
