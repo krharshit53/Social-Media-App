@@ -9,7 +9,8 @@ const Comment=require('./models/comment')
 const userRoute=require('./routes/user')
 const postRoute=require('./routes/post')
 const commentRoute=require('./routes/comment')
-mongoose.connect('mongodb://127.0.0.1:27017/social-media-app', {useNewUrlParser: true, useUnifiedTopology: true,useCreateIndex:true});
+
+mongoose.connect(process.env.MONGODB_URI ||'mongodb://127.0.0.1:27017/social-media-app', {useNewUrlParser: true, useUnifiedTopology: true,useCreateIndex:true});
 
 app.set('view engine','ejs')
 

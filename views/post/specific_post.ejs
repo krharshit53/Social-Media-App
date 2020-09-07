@@ -17,14 +17,7 @@
       
       <a  style=" font-size: 5rem;" href="/myprofile/<%=post.author.username%>"><%=post.author.username%></a>
     
-    <%if(post.author.username!=currentuser.username){%>
-      <%if(currentuser.following.filter((user)=>user.name==post.author.username).length==0){%>
-        <a style="display: inline;" href="/follow/<%=post.author.username%>">Follow</a>
-      <%}else{%>
-        <a style="display: inline;" href="/unfollow/<%=post.author.username%>">UnFollow</a>
-      <%}%>
-      
-    <%}%>
+    
   </div>
    
       <!--<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>-->

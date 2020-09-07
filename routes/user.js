@@ -189,7 +189,7 @@ router.post('/register',(req,res)=>
 
 
 
-
+/*
  router.get('/myfollower',ensureAuthenticated,(req,res)=>
  {
       
@@ -211,8 +211,9 @@ router.post('/register',(req,res)=>
 
       })
  })
+ */
 
-
+/*
  router.get('/myfollwing',ensureAuthenticated,(req,res)=>
  {
       
@@ -234,7 +235,7 @@ router.post('/register',(req,res)=>
 
       })
  })
-
+*/
  router.get('/myprofile',ensureAuthenticated,(req,res)=>
  {
    
