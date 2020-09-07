@@ -1,0 +1,90 @@
+<%- include('../partials/header') %>
+
+
+<div class="container">
+    <div class="row">
+
+     
+
+
+
+
+<div class="col-md-2" >
+    <div class="container" style="margin-top:10%;margin-right:30%;margin-left:30%;" >
+    <div class="thumbnail" >
+      <div class="caption" >
+      <img  style="width:15%; float: left;border-radius: 50%;" src="<%=post.author.image%>">
+      
+      <a  style=" font-size: 5rem;" href="/myprofile/<%=post.author.username%>"><%=post.author.username%></a>
+    
+    <%if(post.author.username!=currentuser.username){%>
+      <%if(currentuser.following.filter((user)=>user.name==post.author.username).length==0){%>
+        <a style="display: inline;" href="/follow/<%=post.author.username%>">Follow</a>
+      <%}else{%>
+        <a style="display: inline;" href="/unfollow/<%=post.author.username%>">UnFollow</a>
+      <%}%>
+      
+    <%}%>
+  </div>
+   
+      <!--<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>-->
+      <div class="caption" style="clear: both ;">
+      <p class="card-text" style="font-size: 2rem"><%=post.body %><a href="/post/<%=post._id%>/readmore"></a></p>
+      
+    </div>
+    <hr>
+    
+    <div class="container-fluid">
+      <div class="row" style="margin-top:1%;">
+          
+    <form action="/comment/<%=post._id%>/new" method="POST">
+    <textarea style="width:100%" rows="10" cols="10" name="body">
+
+    </textarea>
+    <button  class="btn btn-primary btn-lg" style="margin:1%;">Add Comment</button> 
+   </form>
+  </div>
+  </div>
+
+    <hr>
+    <h1>Comments</h1>
+    <hr>
+     <%if(comments.length!=0){%>
+       
+        <%comments.forEach((comment)=>
+        {%>
+              <div class="row" style="margin-left: 2%;margin-right:2% ;margin-top:1%">
+                
+                <a  style=" font-size: 2rem;color:black" href="/myprofile/<%=comment.author%>"><%=comment.author%></a>
+                 <p><%=comment.body%></p>
+                 <%if(comment.likes.filter((user)=>user.username==currentuser.username).length==0){%>
+                 <a href="/comment/<%=post._id%>/<%=comment._id%>/like">Like <%=comment.likes.length%></a>
+                 <%}else{%>
+                 <a href="/comment/<%=post._id%>/<%=comment._id%>/unlike"><strong>Like</strong> <%=comment.likes.length%></a>
+                 <%}%>
+              </div>
+        <%})%>
+    
+    
+      <%}%>
+
+
+
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+  <div class="col-md-2">
+
+  </div>
+
+
+
+</div>
+</div>
+

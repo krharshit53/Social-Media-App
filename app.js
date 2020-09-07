@@ -20,7 +20,15 @@ app.use('/post',postRoute)
 app.use('/comment',commentRoute)
 
 
+app.get('/',(req,res)=>
+{
+    res.redirect('/login')
+})
 
+app.use('*',(req,res)=>
+{
+       res.render('error',{error:'page not found'})
+})
 
 
 

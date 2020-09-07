@@ -1,0 +1,62 @@
+<%- include('../partials/header') %>
+
+<div class="container " style="margin-top: 10vh;">
+    <div class="row text-center flex-wrap flex-grow">
+        
+
+        
+         <%posts.forEach((post)=>
+         {%>
+          
+            <div class="col-md-3 col-sm-6" >
+                <div class="thumbnail"  >
+                  <div class="caption" >
+                  <img  style="width:10% ;height:20%; float: left;border-radius: 40%;" src="<%=post.author.image%>">
+                  
+                  <a  style=" font-size: 2rem; color:black" href="/myprofile/<%=post.author.username%>"><%=post.author.username%></a>
+                
+                <%if(post.author.username!=currentuser.username){%>
+                  <%if(currentuser.following.filter((user)=>user.name==post.author.username).length==0){%>
+                    <a style="display: inline;" href="/follow/<%=post.author.username%>/<%=1%>">Follow</a>
+                  <%}else{%>
+                    <a style="display: inline;" href="/unfollow/<%=post.author.username%>/<%=1%>">UnFollow</a>
+                  <%}%>
+                  
+                <%}%>
+              </div>
+               
+                  <!--<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>-->
+                  <div class="caption" style="clear: both ;">
+                  <p class="card-text"><%=post.body.substring(0,200) %><a href="/post/<%=post._id%>/readmore"> ...Read More</a></p>
+                  <a  href="/post/<%=post._id%>/readmore" >Comment <%= post.comments.length%> </a>
+                  <%if(post.likes.filter((user)=>user.username==currentuser.username).length==0){%>
+                  <a href="/post/<%=post._id%>/like/<%=2%>" >Like <%= post.likes.length%></a>
+                  <%}else{%>
+                    <a href="/post/<%=post._id%>/unlike/<%=2%>" ><Strong>Like </Strong><%= post.likes.length%></a>
+                  <%}%>
+                  
+                </div>
+                <!--<a href="#" class="comment-link">Comment
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-12">
+                <textarea style="width:100%">
+                  comment
+                </textarea>
+              </div>
+              </div>
+              </div>
+              </a>-->
+              </div>
+            </div>
+            
+         <%})%>
+      
+         
+    </div>
+
+        
+    </div>
+    
+
+    

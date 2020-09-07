@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social-media-app</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&family=Playfair+Display:wght@400;600;800&family=Rubik:wght@300;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/public/stylesheets/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+<body>
+    <!--navbar-->
+    <nav  class="navbar navbar-default" style="margin-bottom: 0%;">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            
+            <a class="navbar-brand" href="#">Social-media-app</a>
+          </div>
+          <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              
+              <%if(!currentuser){%>
+                <li><a href="/login">Login</a></li>
+                <li> <a href="/register">Signup</a></li>
+              <%}else {%>
+               <!--
+                <li><a href="/post/mypost">My Post</a></li>
+                <li><a href="/myfollower">Followers</a></li>
+                <li> <a href="/myfollwing">Following</a></li>-->
+              <li><a> <strong><%=currentuser.username%></strong></a></li>
+              <li><a><%=currentuser.type%></a></li>
+              <li> <a href="/logout">Logout</a></li>
+              <%}%>
+            </ul>
+          </div>
+        </div>
+      </nav>
