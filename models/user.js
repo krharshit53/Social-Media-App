@@ -51,12 +51,18 @@ const userSchema= new mongoose.Schema({
             {
                  name:{
                      type:String
+                 },
+                 image:{
+                     type:String
                  }
         }],
         following:[
             {
                 
                 name:{
+                    type:String
+                }
+                ,image:{
                     type:String
                 }
             }
