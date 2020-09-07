@@ -77,14 +77,15 @@ router.post('/register',(req,res)=>
 
 
 
-  router.get('/follow/:author_name/:no',(req,res)=>
+  router.get('/follow/:author_name/:no',ensureAuthenticated,(req,res)=>
   {
      /*follower update*/
       
         User.findOneAndUpdate({username:req.params.author_name},{
           $push:{"followers": {
                           
-            name:req.user.username
+            name:req.user.username,
+            image:req.user.image
        }}
       },(err,follower)=>
       {
@@ -102,7 +103,8 @@ router.post('/register',(req,res)=>
    User.findOneAndUpdate({username:req.user.username},{
         $push:{"following": {
                         
-          name:req.params.author_name
+          name:req.params.author_name,
+         
      }}
     },(err,following)=>
     {
@@ -121,14 +123,15 @@ router.post('/register',(req,res)=>
                 
  })
 
- router.get('/unfollow/:author_name/:no',(req,res)=>
+ router.get('/unfollow/:author_name/:no',ensureAuthenticated,(req,res)=>
  {
     /*follower update*/
      
        User.findOneAndUpdate({username:req.params.author_name},{
          $pull:{"followers": {
                          
-           name:req.user.username
+           name:req.user.username,
+           image:req.user.image
       }}
      },(err,follower)=>
      {
@@ -146,7 +149,8 @@ router.post('/register',(req,res)=>
      User.findOneAndUpdate({username:req.user.username},{
        $pull:{"following": {
                        
-         name:req.params.author_name
+         name:req.params.author_name,
+       
     }}
    },(err,following)=>
    {
@@ -172,7 +176,7 @@ router.post('/register',(req,res)=>
 
 
 
- router.get('/myfollower',(req,res)=>
+ router.get('/myfollower',ensureAuthenticated,(req,res)=>
  {
       
       User.findOne({username:req.user.username},(err,user)=>
@@ -195,7 +199,7 @@ router.post('/register',(req,res)=>
  })
 
 
- router.get('/myfollwing',(req,res)=>
+ router.get('/myfollwing',ensureAuthenticated,(req,res)=>
  {
       
       User.findOne({username:req.user.username},(err,user)=>
@@ -217,7 +221,7 @@ router.post('/register',(req,res)=>
       })
  })
 
- router.get('/myprofile',(req,res)=>
+ router.get('/myprofile',ensureAuthenticated,(req,res)=>
  {
    
 
@@ -242,7 +246,7 @@ router.post('/register',(req,res)=>
    
 
 
-   router.get('/myprofile/:username',(req,res)=>
+   router.get('/myprofile/:username',ensureAuthenticated,(req,res)=>
  {
    
 
@@ -265,6 +269,13 @@ router.post('/register',(req,res)=>
        
    })
  
+
+   function ensureAuthenticated(req, res, next){
+    if (req.isAuthenticated()){
+        return next();
+    }
+    res.redirect('/');
+  }
 
 
   module.exports=router

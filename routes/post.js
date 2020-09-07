@@ -5,7 +5,7 @@ const Comment=require('../models/comment')
 const { route, options } = require('../middlewares')
 
 
-router.get('/explore',(req,res)=>
+router.get('/explore',ensureAuthenticated,(req,res)=>
 {
     Post.find({}).sort({createdAt:-1}).exec((err,posts)=>
     {
@@ -16,7 +16,7 @@ router.get('/explore',(req,res)=>
     })
 })
 
-router.get('/home',(req,res)=>
+router.get('/home',ensureAuthenticated,(req,res)=>
 {
     User.findOne({username:req.user.username},(err,user)=>
     {
@@ -51,7 +51,7 @@ router.get('/home',(req,res)=>
 })
 
 
-router.get('/:id/readmore',(req,res)=>
+router.get('/:id/readmore',ensureAuthenticated,(req,res)=>
 {
        Post.findOne({_id:req.params.id},(err,post)=>
        {
@@ -94,12 +94,12 @@ router.get('/mypost',(req,res)=>
        })
 })*/
 
-router.get('/new',(req,res)=>
+router.get('/new',ensureAuthenticated,(req,res)=>
 {
       res.render('post/new')
 })
 
-router.post('/new',(req,res)=>
+router.post('/new',ensureAuthenticated,(req,res)=>
 {
         Post.create({body:req.body.body,createdAt:Date.now(),author:{name:req.user.name,username:req.user.username,image:req.user.image}},(err,post)=>
         {
@@ -124,7 +124,7 @@ router.post('/new',(req,res)=>
 })
 
 
-router.get('/:id/like/:no',(req,res)=>
+router.get('/:id/like/:no',ensureAuthenticated,(req,res)=>
 {
         Post.findByIdAndUpdate(req.params.id,{
              $push:{"likes":{
@@ -144,7 +144,7 @@ router.get('/:id/like/:no',(req,res)=>
         )
 })
 
-router.get('/:id/unlike/:no',(req,res)=>
+router.get('/:id/unlike/:no',ensureAuthenticated,(req,res)=>
 {
         Post.findByIdAndUpdate(req.params.id,{
              $pull:{"likes":{
@@ -164,6 +164,13 @@ router.get('/:id/unlike/:no',(req,res)=>
         )
 })
 
+function ensureAuthenticated(req, res, next){
+     if (req.isAuthenticated()){
+         return next();
+     }
+     res.redirect('/');
+   }
+ 
 
 
 
