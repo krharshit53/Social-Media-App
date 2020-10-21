@@ -8,6 +8,7 @@
 
 ## Database Setup
 ### Models
+<<<<<<< HEAD
 - Comments.js    &emsp; ** Comment Schema**
 - Post.js        &emsp; ** Post Schema **
 - User.js         &emsp;** User Schema **
@@ -37,3 +38,34 @@
 
 ## Server setup
 - - app.js  &emsp;** entry point **
+=======
+- Comments.js              ** Comment Schema **
+- Post.js                  ** Post Schema **
+- User.js                  ** User Schema **
+ 
+## Routes Setup
+- Comment.js               ** Comment Routes **
+- Post.js                   ** Post Routes **
+- User.js                  ** User Routes **
+
+## Views Setup
+- +---partials            ** Footer and Header **
+- - footer.ejs            ** footer **
+- - header.ejs            ** header **
+- +---post                ** Post Views **
+- - explore.ejs           ** Explore views **
+- - home.ejs              ** home views **
+- - new.ejs               ** for new post **
+- - show.ejs              ** Show All Post **
+- - specific_post.ejs     ** page for specific post **
+- \---user               ** User Views login and Signup page **
+- - login.ejs            ** login view **
+- - myprofile.ejs        ** profile view of a user **
+- - register.ejs         ** register view **
+
+## Middlewares setup
+- - index.js            ** All global middlewares **
+
+## Server setup
+- - app.js              ** entry point **
+>>>>>>> aa94fa61529810fef6e8808cd235666c07146e90
