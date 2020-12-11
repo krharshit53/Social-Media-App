@@ -6,44 +6,47 @@
 - Like and Comment on Post
 - Follow and Unfollow other Users
 
-```html
+
 ## Database Setup
 
 ### Models
-
-- Comments.js                        &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;# Comment Schema
-- Post.js                            &emsp; &emsp; &emsp; &emsp;  &emsp; &emsp;# Post Schema 
-- User.js                            &emsp; &emsp; &emsp; &emsp;  &emsp; &emsp;# User Schema 
-```
 ```html
+- Comments.js                                                                 Comment Schema
+- Post.js                                                                     Post Schema 
+- User.js                                                                     User Schema 
+```
+
 ## Routes Setup
-- Comment.js                         &emsp; &emsp; &emsp; &emsp; &emsp;&emsp; # Comment Routes 
-- Post.js                            &emsp; &emsp; &emsp; &emsp; &emsp;&emsp; # Post Routes 
-- User.js                            &emsp; &emsp; &emsp; &emsp; &emsp;&emsp; # User Routes 
+```html
+- Comment.js                                                                  Comment Routes 
+- Post.js                                                                     Post Routes 
+- User.js                                                                     User Routes 
 ```
 
-```html
+
 ## Views Setup
-- +---partials                       &emsp; &emsp; &emsp; &emsp; &emsp;&emsp; # Footer and Header 
-    - footer.ejs                       &emsp; &emsp; &emsp; &emsp;&emsp;&emsp; # footer 
-    - header.ejs                       &emsp; &emsp; &emsp; &emsp;&emsp;&emsp; # header 
-- +---post                           &emsp; &emsp; &emsp; &emsp;&emsp;&emsp; # Post Views 
-    - explore.ejs                      &emsp; &emsp; &emsp; &emsp;&emsp;&emsp; # Explore views 
-    - home.ejs                         &emsp; &emsp; &emsp; &emsp; &emsp;&emsp; # home views 
-    - new.ejs                          &emsp; &emsp; &emsp; &emsp;&emsp;&emsp; # for new post 
-    - show.ejs                         &emsp; &emsp; &emsp; &emsp;&emsp;&emsp; # Show All Post 
-    - specific_post.ejs                &emsp; &emsp; &emsp; &emsp;&emsp;&emsp;#page for specific post 
-- \---user                           &emsp; &emsp; &emsp; &emsp;&emsp;&emsp;# User Views login and Signup page 
-    - login.ejs                        &emsp; &emsp; &emsp; &emsp; &emsp;&emsp;# login view 
-    - myprofile.ejs                    &emsp; &emsp; &emsp; &emsp;&emsp;&emsp;# profile view of a user 
-    - register.ejs                     &emsp; &emsp; &emsp; &emsp;&emsp;&emsp;# register view 
-```
 ```html
+- +---partials                                                               Footer and Header 
+    - footer.ejs                                                              footer 
+    - header.ejs                                                              header 
+- +---post                                                                    Post Views 
+    - explore.ejs                                                             Explore views 
+    - home.ejs                                                                home views 
+    - new.ejs                                                                 for new post 
+    - show.ejs                                                                Show All Post 
+    - specific_post.ejs                                                       page for specific post 
+- \---user                                                                    User Views login and Signup page 
+    - login.ejs                                                               login view 
+    - myprofile.ejs                                                           profile view of a user 
+    - register.ejs                                                            register view 
+```
+
 ## Middlewares setup
- - index.js                         &emsp; &emsp; &emsp; &emsp; &emsp;&emsp;# All global middlewares 
+```html
+ - index.js                                                                   All global middlewares 
 ```
 ```html
 ## Server setup
-- app.js                          &emsp; &emsp; &emsp; &emsp; &emsp;&emsp;# entry point 
+- app.js                                                                       entry point 
 ```
 
