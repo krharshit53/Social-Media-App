@@ -45,8 +45,9 @@
 ```html
  - index.js                                                                   All global middlewares 
 ```
-```html
+
 ## Server setup
+```html
 - app.js                                                                       entry point 
 ```
 
