@@ -20,23 +20,23 @@
 
 ## Views Setup
 - +---partials                       &emsp; &emsp; &emsp; &emsp; &emsp;&emsp; # Footer and Header 
-- - footer.ejs                       &emsp; &emsp; &emsp; &emsp;&emsp;&emsp; # footer 
-- - header.ejs                       &emsp; &emsp; &emsp; &emsp;&emsp;&emsp; # header 
+    - footer.ejs                       &emsp; &emsp; &emsp; &emsp;&emsp;&emsp; # footer 
+    - header.ejs                       &emsp; &emsp; &emsp; &emsp;&emsp;&emsp; # header 
 - +---post                           &emsp; &emsp; &emsp; &emsp;&emsp;&emsp; # Post Views 
-- - explore.ejs                      &emsp; &emsp; &emsp; &emsp;&emsp;&emsp; # Explore views 
-- - home.ejs                         &emsp; &emsp; &emsp; &emsp; &emsp;&emsp; # home views 
-- - new.ejs                          &emsp; &emsp; &emsp; &emsp;&emsp;&emsp; # for new post 
-- - show.ejs                         &emsp; &emsp; &emsp; &emsp;&emsp;&emsp; # Show All Post 
-- - specific_post.ejs                &emsp; &emsp; &emsp; &emsp;&emsp;&emsp;#page for specific post 
+    - explore.ejs                      &emsp; &emsp; &emsp; &emsp;&emsp;&emsp; # Explore views 
+    - home.ejs                         &emsp; &emsp; &emsp; &emsp; &emsp;&emsp; # home views 
+    - new.ejs                          &emsp; &emsp; &emsp; &emsp;&emsp;&emsp; # for new post 
+    - show.ejs                         &emsp; &emsp; &emsp; &emsp;&emsp;&emsp; # Show All Post 
+    - specific_post.ejs                &emsp; &emsp; &emsp; &emsp;&emsp;&emsp;#page for specific post 
 - \---user                           &emsp; &emsp; &emsp; &emsp;&emsp;&emsp;# User Views login and Signup page 
-- - login.ejs                        &emsp; &emsp; &emsp; &emsp; &emsp;&emsp;# login view 
-- - myprofile.ejs                    &emsp; &emsp; &emsp; &emsp;&emsp;&emsp;# profile view of a user 
-- - register.ejs                     &emsp; &emsp; &emsp; &emsp;&emsp;&emsp;# register view 
+    - login.ejs                        &emsp; &emsp; &emsp; &emsp; &emsp;&emsp;# login view 
+    - myprofile.ejs                    &emsp; &emsp; &emsp; &emsp;&emsp;&emsp;# profile view of a user 
+    - register.ejs                     &emsp; &emsp; &emsp; &emsp;&emsp;&emsp;# register view 
 
 ## Middlewares setup
-- - index.js                         &emsp; &emsp; &emsp; &emsp; &emsp;&emsp;# All global middlewares 
+    - index.js                         &emsp; &emsp; &emsp; &emsp; &emsp;&emsp;# All global middlewares 
 
 ## Server setup
-- - app.js                          &emsp; &emsp; &emsp; &emsp; &emsp;&emsp;# entry point 
+    - app.js                          &emsp; &emsp; &emsp; &emsp; &emsp;&emsp;# entry point 
 
 
